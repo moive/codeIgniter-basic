@@ -1,5 +1,6 @@
 <?php namespace App\Controllers;
 
+use App\Models\UserModel;
 class HelloWorld extends BaseController
 {
     public function index(){
@@ -14,7 +15,10 @@ class HelloWorld extends BaseController
     }
 
     public function html(){
-        return view('structure/header').view('structure/body');
+        $userModel = new UserModel($db);
+		$user = $userModel->find('1');
+		var_dump($user);
+        return view('structure/header').view('structure/body', $user);
     }
     
 }
