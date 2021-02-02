@@ -22,13 +22,13 @@ class HelloWorld extends BaseController
         // $users = $userModel->findAll(3,1);
         // $users = $userModel->onlyDeleted()->findAll();
         $data = [
-            'name'=>'developer3',
-            'email'=>'developer3@test.com'
+            'name'=>'yo',
+            // 'email'=>'developer3@test.com'
         ];
 
         // $userModel->insert($data);
 
-        $userModel->update(9, $data);
+        $userModel->update([8,9], $data);
 
         $users = $userModel->findAll();
 
