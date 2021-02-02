@@ -1,5 +1,5 @@
 <?php
-    echo $header_body;
+    // echo $header_body;
     // echo view('structure/header');
 ?>
 <body>
