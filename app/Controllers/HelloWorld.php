@@ -16,9 +16,10 @@ class HelloWorld extends BaseController
 
     public function html(){
         $userModel = new UserModel($db);
-		$user = $userModel->find('1');
-		var_dump($user);
-        return view('structure/header').view('structure/body', $user);
+        $users = $userModel->find([1,3]);
+        $users = array('users'=>$users);
+        // var_dump($users);
+        return view('structure/header').view('structure/body', $users);
     }
     
 }
