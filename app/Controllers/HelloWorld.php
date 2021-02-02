@@ -39,10 +39,11 @@ class HelloWorld extends BaseController
         //     var_dump($userModel->errors());
         // }
 
-        $users = $userModel->where('name','developer12')->orderBy('id','desc')->findAll();
+        $users = $userModel->asObject()->where('name','developer12')->orderBy('id','desc')->findAll();
 
+        var_dump($users);
+        die();
         $users = array('users'=>$users);
-        // var_dump($users);
         return view('structure/header').view('structure/body', $users);
     }
     
