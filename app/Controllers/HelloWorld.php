@@ -3,6 +3,15 @@
 use App\Models\UserModel;
 class HelloWorld extends BaseController
 {
+    public function __construct(){
+        helper('form');
+    }
+
+    public function form(){
+        $structure = view('structure/header').view('structure/form');
+        return $structure;
+    }
+
     public function index(){
         return view('view_hello_world');
     }
