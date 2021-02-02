@@ -34,7 +34,7 @@ class HelloWorld extends BaseController
         // $userModel->whereIn('id',[1,2])->set(['name'=>'me'])->update();
         // $userModel->save($data);
 
-        $userModel->delete([8,9]);
+        $userModel->where('name','Maria')->delete();
 
         $users = $userModel->findAll();
 
