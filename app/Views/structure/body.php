@@ -15,7 +15,7 @@
             <tr>
                 <td><?php echo $user['name'] ?></td>
                 <td><?php echo $user['email'] ?></td>
-                <td><?php echo $user['deleted'] ?></td>
+                <td><?php echo $user['deleted_at'] != null ? $user['deleted_at'] : '0'  ?></td>
             </tr>
             <?php endforeach?>
         </table>

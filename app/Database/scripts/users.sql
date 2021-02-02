@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 01-02-2021 a las 22:47:34
+-- Tiempo de generación: 02-02-2021 a las 01:18:11
 -- Versión del servidor: 5.7.31
 -- Versión de PHP: 8.0.1
 
@@ -34,17 +34,21 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` varchar(100) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `deleted_at` datetime DEFAULT NULL,
-  `deleted` int(11) NOT NULL DEFAULT '0',
+  `deleted_at` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `created_at`, `updated_at`, `deleted_at`, `deleted`) VALUES
-(1, 'Moises', 'mvelasquez@pictoric.com', '2021-02-01 17:17:06', '2021-02-01 17:17:06', NULL, 0);
+INSERT INTO `users` (`id`, `name`, `email`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'Moises', 'mvelasquez@pictoric.com', '2021-02-01 17:17:06', '2021-02-01 17:17:06', NULL),
+(2, 'Maria', 'info@maria.com', '2021-02-01 19:10:29', '2021-02-01 19:10:29', NULL),
+(3, 'Juan', 'juan@test.com', '2021-02-01 19:10:29', '2021-02-01 19:10:29', NULL),
+(4, 'Peter', 'peter@test.com', '2021-02-01 19:11:11', '2021-02-01 19:11:11', NULL),
+(5, 'Jorge', 'jorge@test.com', '2021-02-01 19:11:11', '2021-02-01 19:11:11', NULL),
+(6, 'Veronika', 'veronika@test.com', '2021-02-01 19:47:24', '2021-02-01 19:47:24', NULL);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
