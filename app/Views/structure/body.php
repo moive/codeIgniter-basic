@@ -1,5 +1,6 @@
 <?php
-    echo view('structure/header');
+    echo $header_body;
+    // echo view('structure/header');
 ?>
 <body>
     <main class="container  mt-5">
