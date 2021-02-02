@@ -25,7 +25,11 @@ class HelloWorld extends BaseController
             'email'=>$request->getPostGet('email'),
         );
 
-        if($userModel->insert($data)===false){
+        $getId = $request->getPostGet('id');
+
+        if($getId) $data['id'] = $getId;
+
+        if($userModel->save($data)===false){
             var_dump($userModel->errors());
         }
 
@@ -35,6 +39,18 @@ class HelloWorld extends BaseController
         return view('structure/header').view('structure/body', $users);
     }
 
+    public function edit(){
+        $userModel = new UserModel($db);
+        $request = \Config\Services::request();
+        $id = $request->getPostGet('id');
+
+        $user = $userModel->find([$id]);
+        $user = array('user' => $user);
+
+        $structure = view('structure/header').view('structure/form', $user);
+        var_dump($user);
+        return $structure;
+    }
 
     public function test(){
         $data['value1'] = "value 1";

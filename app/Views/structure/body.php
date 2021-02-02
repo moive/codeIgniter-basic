@@ -23,12 +23,9 @@
                 <td><?php echo $user['email'] ?></td>
                 <td><?php echo $user['deleted_at'] != null ? $user['deleted_at'] : '0'  ?></td>
                 <td>
-                    <?php echo form_button(array(
-                        'name'=>'edit',
-                        'type'=>'submit',
-                        'class'=>'btn btn-warning',
-                        'content'=>'<i class="fas fa-edit"></i>'
-                    ));?>
+                    <a class="btn btn-primary" href="<?php echo base_url()?>/HelloWorld/edit?id=<?php echo $user['id'] ?>">
+                        <i class="fas fa-edit"></i>
+                    </a>
                     <?php echo form_button(array(
                         'name'=>'delete',
                         'type'=>'submit',
