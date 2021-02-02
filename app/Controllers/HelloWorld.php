@@ -22,9 +22,8 @@ class HelloWorld extends BaseController
         // $users = $userModel->findAll(3,1);
         // $users = $userModel->onlyDeleted()->findAll();
         $data = [
-            "id"=> "11",
-            'name'=>'developer11',
-            'email'=>'developer11@test.com'
+            'name'=>'developer12',
+            'email'=>'developer12@test.com'
         ];
 
         // $userModel->insert($data);
@@ -34,7 +33,11 @@ class HelloWorld extends BaseController
         // $userModel->whereIn('id',[1,2])->set(['name'=>'me'])->update();
         // $userModel->save($data);
 
-        $userModel->purgeDeleted();
+        // $userModel->purgeDeleted();
+        
+        if($userModel->save($data) === false){
+            var_dump($userModel->errors());
+        }
 
         $users = $userModel->findAll();
 
