@@ -125,6 +125,7 @@ class HelloWorld extends BaseController
         // var_dump($users);
         
         $users = array('users'=>$users);
-        return view('structure/header').view('structure/body', $users);
+        // return view('structure/header').view('structure/body', $users);
+        return view('structure/body', $users);
     }
 }

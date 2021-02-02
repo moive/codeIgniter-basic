@@ -1,3 +1,6 @@
+<?php
+    echo view('structure/header');
+?>
 <body>
     <main class="container  mt-5">
         <!-- <h1>Welcome: <?php #echo $name?></h1>
