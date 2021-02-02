@@ -22,8 +22,8 @@ class HelloWorld extends BaseController
         // $users = $userModel->findAll(3,1);
         // $users = $userModel->onlyDeleted()->findAll();
         $data = [
-            'name'=>'developer12',
-            'email'=>'developer12@test.com'
+            'name'=>'developer14',
+            'email'=>'developer14@test.com'
         ];
 
         // $userModel->insert($data);
@@ -38,11 +38,11 @@ class HelloWorld extends BaseController
         // if($userModel->save($data) === false){
         //     var_dump($userModel->errors());
         // }
+        $userModel->save($data);
+        $users = $userModel->findAll();
 
-        $users = $userModel->asArray()->where('name','developer12')->orderBy('id','desc')->findAll();
-
-        var_dump($users);
-        die();
+        // var_dump($users);
+        
         $users = array('users'=>$users);
         return view('structure/header').view('structure/body', $users);
     }
