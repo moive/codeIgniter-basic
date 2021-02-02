@@ -19,7 +19,8 @@ class HelloWorld extends BaseController
         // $users = $userModel->find([1,3]);
         // $users = $userModel->findAll();
         // $users = $userModel->where('name','moises')->findAll();
-        $users = $userModel->findAll(3,1);
+        // $users = $userModel->findAll(3,1);
+        $users = $userModel->withDeleted()->findAll();
         $users = array('users'=>$users);
         // var_dump($users);
         return view('structure/header').view('structure/body', $users);
