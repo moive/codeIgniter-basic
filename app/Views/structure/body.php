@@ -1,6 +1,6 @@
 <body>
     <main class="container  mt-5">
-        <!-- <h1>Welcome: <?php #echo $name ?></h1>
+        <!-- <h1>Welcome: <?php #echo $name?></h1>
         Here content body... <?php echo subtraction(5.5, 2.5)?> -->
 
         <h1>Users</h1>
@@ -26,12 +26,9 @@
                     <a class="btn btn-primary" href="<?php echo base_url()?>/HelloWorld/edit?id=<?php echo $user['id'] ?>">
                         <i class="fas fa-edit"></i>
                     </a>
-                    <?php echo form_button(array(
-                        'name'=>'delete',
-                        'type'=>'submit',
-                        'class'=>'btn btn-danger',
-                        'content'=>'<i class="fas fa-trash"></i>'
-                    ));?>
+                    <a class="btn btn-danger" href="<?php echo base_url()?>/HelloWorld/delete?id=<?php echo $user['id'] ?>">
+                        <i class="fas fa-trash"></i>
+                    </a>
                 </td>
             </tr>
             <?php endforeach?>

@@ -1,21 +1,26 @@
 <?php namespace App\Controllers;
 
 use App\Models\UserModel;
+
 class HelloWorld extends BaseController
 {
-    public function __construct(){
+    public function __construct()
+    {
         helper('form');
     }
-    public function index(){
+    public function index()
+    {
         return view('view_hello_world');
     }
 
-    public function form(){
+    public function form()
+    {
         $structure = view('structure/header').view('structure/form');
         return $structure;
     }
 
-    public function save(){
+    public function save()
+    {
         $userModel = new UserModel($db);
 
         $request = \Config\Services::request();
@@ -27,9 +32,11 @@ class HelloWorld extends BaseController
 
         $getId = $request->getPostGet('id');
 
-        if($getId) $data['id'] = $getId;
+        if ($getId) {
+            $data['id'] = $getId;
+        }
 
-        if($userModel->save($data)===false){
+        if ($userModel->save($data)===false) {
             var_dump($userModel->errors());
         }
 
@@ -39,7 +46,8 @@ class HelloWorld extends BaseController
         return view('structure/header').view('structure/body', $users);
     }
 
-    public function edit(){
+    public function edit()
+    {
         $userModel = new UserModel($db);
         $request = \Config\Services::request();
         $id = $request->getPostGet('id');
@@ -48,18 +56,20 @@ class HelloWorld extends BaseController
         $user = array('user' => $user);
 
         $structure = view('structure/header').view('structure/form', $user);
-        var_dump($user);
+        // var_dump($user);
         return $structure;
     }
 
-    public function test(){
+    public function test()
+    {
         $data['value1'] = "value 1";
         $data['value2'] = "value 2";
         $data['value3'] = "value 3";
         return view('view_test', $data);
     }
 
-    public function html(){
+    public function html()
+    {
         $userModel = new UserModel($db);
         // $users = $userModel->find([1,3]);
         // $users = $userModel->findAll();
@@ -91,5 +101,4 @@ class HelloWorld extends BaseController
         $users = array('users'=>$users);
         return view('structure/header').view('structure/body', $users);
     }
-    
 }

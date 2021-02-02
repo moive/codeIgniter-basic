@@ -35,7 +35,8 @@ class UserModel extends Model
     // protected $beforeInsert=['addSomethingName'];
     // protected $beforeUpdate=['addSomethingName'];
     
-    protected function addSomethingName(array $data){
+    protected function addSomethingName(array $data)
+    {
         $data['data']['name'] = $data['data']['name']." --fix";
 
         return $data;
