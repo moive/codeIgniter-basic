@@ -13,6 +13,7 @@
             </tr>
             <?php foreach ($users as $user): ?>
             <tr>
+                <td><?php echo $user['id'] ?></td>
                 <td><?php echo $user['name'] ?></td>
                 <td><?php echo $user['email'] ?></td>
                 <td><?php echo $user['deleted_at'] != null ? $user['deleted_at'] : '0'  ?></td>
