@@ -50,7 +50,14 @@ class HelloWorld extends BaseController
     {
         $userModel = new UserModel($db);
         $request = \Config\Services::request();
-        $id = $request->getPostGet('id');
+
+        if ($request->getPostGet('id')) {
+            $id = $request->getPostGet('id');
+        } else {
+            $id = $request->uri->getSegment(3); // HelloWorld/edit/:id HelloWorld = 1  edit=2  id=3
+        }
+        
+
 
         $user = $userModel->find([$id]);
         $user = array('user' => $user);
@@ -63,7 +70,12 @@ class HelloWorld extends BaseController
     {
         $userModel = new UserModel($db);
         $request = \Config\Services::request();
-        $id = $request->getPostGet('id');
+        
+        if ($request->getPostGet('id')) {
+            $id = $request->getPostGet('id');
+        } else {
+            $id = $request->uri->getSegment(3); // HelloWorld/edit/:id HelloWorld = 1  edit=2  id=3
+        }
 
         $userModel->delete($id);
 

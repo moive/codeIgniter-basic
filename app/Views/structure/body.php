@@ -23,10 +23,10 @@
                 <td><?php echo $user['email'] ?></td>
                 <td><?php echo $user['deleted_at'] != null ? $user['deleted_at'] : '0'  ?></td>
                 <td>
-                    <a class="btn btn-primary" href="<?php echo base_url()?>/HelloWorld/edit?id=<?php echo $user['id'] ?>">
+                    <a class="btn btn-primary" href="<?php echo base_url()?>/HelloWorld/edit/<?php echo $user['id'] ?>">
                         <i class="fas fa-edit"></i>
                     </a>
-                    <a class="btn btn-danger" href="<?php echo base_url()?>/HelloWorld/delete?id=<?php echo $user['id'] ?>">
+                    <a class="btn btn-danger" href="<?php echo base_url()?>/HelloWorld/delete/<?php echo $user['id'] ?>">
                         <i class="fas fa-trash"></i>
                     </a>
                 </td>
