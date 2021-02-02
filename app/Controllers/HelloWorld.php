@@ -16,8 +16,9 @@ class HelloWorld extends BaseController
 
     public function html(){
         $userModel = new UserModel($db);
-        $users = $userModel->find([1,3]);
-        $users = $userModel->findAll();
+        // $users = $userModel->find([1,3]);
+        // $users = $userModel->findAll();
+        $users = $userModel->where('name','moises')->findAll();
         $users = array('users'=>$users);
         // var_dump($users);
         return view('structure/header').view('structure/body', $users);
