@@ -4,6 +4,9 @@
         Here content body... <?php echo subtraction(5.5, 2.5)?> -->
 
         <h1>Users</h1>
+        <div>
+            <a class="btn btn-info my-3" href="<?php echo base_url()?>/HelloWorld/form">New User</a>
+        </div>
 
         <table class="table">
             <tr>
@@ -11,6 +14,7 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>Deleted</th>
+                <th>Actions</th>
             </tr>
             <?php foreach ($users as $user): ?>
             <tr>
@@ -18,6 +22,20 @@
                 <td><?php echo $user['name'] ?></td>
                 <td><?php echo $user['email'] ?></td>
                 <td><?php echo $user['deleted_at'] != null ? $user['deleted_at'] : '0'  ?></td>
+                <td>
+                    <?php echo form_button(array(
+                        'name'=>'edit',
+                        'type'=>'submit',
+                        'class'=>'btn btn-warning',
+                        'content'=>'<i class="fas fa-edit"></i>'
+                    ));?>
+                    <?php echo form_button(array(
+                        'name'=>'delete',
+                        'type'=>'submit',
+                        'class'=>'btn btn-danger',
+                        'content'=>'<i class="fas fa-trash"></i>'
+                    ));?>
+                </td>
             </tr>
             <?php endforeach?>
         </table>
