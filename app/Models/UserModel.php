@@ -23,7 +23,7 @@ class UserModel extends Model
 
     protected $validationRules    = [
         'name'=>'required|alpha_numeric_space|min_length[3]',
-        // 'email'=>'required|valid_email|is_unique[users.email]'
+        'email'=>'required|valid_email[users.email]'
     ];
     protected $validationMessages = [
         'email'=>[

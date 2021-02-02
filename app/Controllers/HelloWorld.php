@@ -59,6 +59,20 @@ class HelloWorld extends BaseController
         // var_dump($user);
         return $structure;
     }
+    public function delete()
+    {
+        $userModel = new UserModel($db);
+        $request = \Config\Services::request();
+        $id = $request->getPostGet('id');
+
+        $userModel->delete($id);
+
+        $users = $userModel->findAll();
+        $users = array('users' => $users);
+
+        $structure = view('structure/header').view('structure/body', $users);
+        return $structure;
+    }
 
     public function test()
     {
