@@ -7,6 +7,7 @@
 
         <table class="table">
             <tr>
+                <th>Id</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Deleted</th>
