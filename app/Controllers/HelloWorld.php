@@ -6,15 +6,35 @@ class HelloWorld extends BaseController
     public function __construct(){
         helper('form');
     }
+    public function index(){
+        return view('view_hello_world');
+    }
 
     public function form(){
         $structure = view('structure/header').view('structure/form');
         return $structure;
     }
 
-    public function index(){
-        return view('view_hello_world');
+    public function save(){
+        $userModel = new UserModel($db);
+
+        $request = \Config\Services::request();
+
+        $data = array(
+            'name'=>$request->getPostGet('name'),
+            'email'=>$request->getPostGet('email'),
+        );
+
+        if($userModel->insert($data)===false){
+            var_dump($userModel->errors());
+        }
+
+        $users=$userModel->findAll();
+        $users = array('users'=>$users);
+
+        return view('structure/header').view('structure/body', $users);
     }
+
 
     public function test(){
         $data['value1'] = "value 1";
