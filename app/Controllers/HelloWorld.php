@@ -119,7 +119,7 @@ class HelloWorld extends BaseController
         // if($userModel->save($data) === false){
         //     var_dump($userModel->errors());
         // }
-        $userModel->save($data);
+        // $userModel->save($data);
         $users = $userModel->findAll();
 
         // var_dump($users);
