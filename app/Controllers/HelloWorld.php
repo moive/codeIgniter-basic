@@ -35,11 +35,11 @@ class HelloWorld extends BaseController
 
         // $userModel->purgeDeleted();
         
-        if($userModel->save($data) === false){
-            var_dump($userModel->errors());
-        }
+        // if($userModel->save($data) === false){
+        //     var_dump($userModel->errors());
+        // }
 
-        $users = $userModel->findAll();
+        $users = $userModel->where('name','developer12')->orderBy('id','desc')->findAll();
 
         $users = array('users'=>$users);
         // var_dump($users);
