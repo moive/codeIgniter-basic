@@ -6,10 +6,47 @@ use App\Models\UserModel;
 
 class HelloWorld extends BaseController
 {
+    public $session = null;
     public function __construct()
     {
         helper('form');
+        $this->session = \Config\Services::session();
     }
+
+    public function putData()
+    {
+        $newdata = [
+            'name' => 'Moises',
+            'email' => 'moises@test.com',
+            'login' => TRUE
+        ];
+
+        $this->session->set($newdata);
+        echo $this->session->get('email');
+    }
+
+    public function readData()
+    {
+        $br = '<br/>';
+        if ($this->session->has('name')) {
+            echo 'name: ' . $this->session->get('name') . $br;
+            echo 'email: ' . $this->session->get('email') . $br;
+            echo 'login ' . $this->session->get('login');
+        } else {
+            echo 'data not found';
+        }
+    }
+
+    public function removeEmail()
+    {
+        $this->session->remove('email');
+    }
+
+    public function destroyData()
+    {
+        $this->session->destroy();
+    }
+
     public function index()
     {
         return view('view_hello_world');
