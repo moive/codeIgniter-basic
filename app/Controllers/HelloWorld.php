@@ -1,4 +1,6 @@
-<?php namespace App\Controllers;
+<?php
+
+namespace App\Controllers;
 
 use App\Models\UserModel;
 
@@ -15,7 +17,7 @@ class HelloWorld extends BaseController
 
     public function form()
     {
-        $structure = view('structure/header').view('structure/form');
+        $structure = view('structure/header') . view('structure/form');
         return $structure;
     }
 
@@ -26,8 +28,8 @@ class HelloWorld extends BaseController
         $request = \Config\Services::request();
 
         $data = array(
-            'name'=>$request->getPostGet('name'),
-            'email'=>$request->getPostGet('email'),
+            'name' => $request->getPostGet('name'),
+            'email' => $request->getPostGet('email'),
         );
 
         $getId = $request->getPostGet('id');
@@ -36,14 +38,14 @@ class HelloWorld extends BaseController
             $data['id'] = $getId;
         }
 
-        if ($userModel->save($data)===false) {
+        if ($userModel->save($data) === false) {
             var_dump($userModel->errors());
         }
 
-        $users=$userModel->findAll();
-        $users = array('users'=>$users);
+        $users = $userModel->findAll();
+        $users = array('users' => $users);
 
-        return view('structure/header').view('structure/body', $users);
+        return view('structure/header') . view('structure/body', $users);
     }
 
     public function edit()
@@ -56,13 +58,13 @@ class HelloWorld extends BaseController
         } else {
             $id = $request->uri->getSegment(3); // HelloWorld/edit/:id HelloWorld = 1  edit=2  id=3
         }
-        
+
 
 
         $user = $userModel->find([$id]);
         $user = array('user' => $user);
 
-        $structure = view('structure/header').view('structure/form', $user);
+        $structure = view('structure/header') . view('structure/form', $user);
         // var_dump($user);
         return $structure;
     }
@@ -70,7 +72,7 @@ class HelloWorld extends BaseController
     {
         $userModel = new UserModel($db);
         $request = \Config\Services::request();
-        
+
         if ($request->getPostGet('id')) {
             $id = $request->getPostGet('id');
         } else {
@@ -82,7 +84,7 @@ class HelloWorld extends BaseController
         $users = $userModel->findAll();
         $users = array('users' => $users);
 
-        $structure = view('structure/header').view('structure/body', $users);
+        $structure = view('structure/header') . view('structure/body', $users);
         return $structure;
     }
 
@@ -94,6 +96,18 @@ class HelloWorld extends BaseController
         return view('view_test', $data);
     }
 
+    public function rotatedImage()
+    {
+        $image = \Config\Services::image()
+            ->withFile('./img/logo-codeigniter.png')
+            ->reorient()
+            ->rotate(180)
+            ->fit(50, 150, 'bottom-right')
+            ->save('./img/logo-codeigniter-rotated.png');
+
+        return view('structure/image');
+    }
+
     public function html()
     {
         $userModel = new UserModel($db);
@@ -103,8 +117,8 @@ class HelloWorld extends BaseController
         // $users = $userModel->findAll(3,1);
         // $users = $userModel->onlyDeleted()->findAll();
         $data = [
-            'name'=>'developer14',
-            'email'=>'developer14@test.com'
+            'name' => 'developer14',
+            'email' => 'developer14@test.com'
         ];
 
         // $userModel->insert($data);
@@ -115,7 +129,7 @@ class HelloWorld extends BaseController
         // $userModel->save($data);
 
         // $userModel->purgeDeleted();
-        
+
         // if($userModel->save($data) === false){
         //     var_dump($userModel->errors());
         // }
@@ -123,7 +137,7 @@ class HelloWorld extends BaseController
         $users = $userModel->paginate(3);
         $pager = $userModel->pager;
         $pager->setPath('HelloWorld/html/');
-        
+
         // var_dump($pager->getTotal());
         // var_dump($pager->getCurrentPage());
         // var_dump($pager->getPageCount());
@@ -133,8 +147,8 @@ class HelloWorld extends BaseController
         // var_dump($pager->getNextPageURI());
         // var_dump($pager->getPreviousPageURI());
         // var_dump($pager->getDetails()['total']);
-        
-        $users = array('users'=>$users,'pager'=>$pager);
-        return view('structure/header').view('structure/body', $users);
+
+        $users = array('users' => $users, 'pager' => $pager);
+        return view('structure/header') . view('structure/body', $users);
     }
 }
