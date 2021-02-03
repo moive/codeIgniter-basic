@@ -101,8 +101,9 @@ class HelloWorld extends BaseController
         $image = \Config\Services::image()
             ->withFile('./img/logo-codeigniter.png')
             ->reorient()
-            ->rotate(180)
-            ->fit(50, 150, 'bottom-right')
+            // ->rotate(180)
+            // ->fit(50, 150, 'bottom-right')
+            ->resize(400, 400, true)
             ->save('./img/logo-codeigniter-rotated.png');
 
         return view('structure/image');
