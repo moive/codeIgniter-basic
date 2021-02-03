@@ -1,6 +1,7 @@
 <?php
     // echo $header_body;
     // echo view('structure/header');
+    
 ?>
 <body>
     <main class="container  mt-5">
@@ -39,6 +40,7 @@
             <?php endforeach?>
             <?php endif ?>
         </table>
+        <?= $pager->links('default', 'front_pager')?>
     </main>
 </body>
 </html>

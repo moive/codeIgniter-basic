@@ -120,11 +120,14 @@ class HelloWorld extends BaseController
         //     var_dump($userModel->errors());
         // }
         // $userModel->save($data);
-        $users = $userModel->findAll();
-
+        $users = $userModel->paginate(3);
+        $pager = $userModel->pager;
+        $pager->setPath('HelloWorld/html/');
+        
+        
         // var_dump($users);
         
-        $users = array('users'=>$users);
+        $users = array('users'=>$users,'pager'=>$pager);
         return view('structure/header').view('structure/body', $users);
     }
 }
