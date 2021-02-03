@@ -124,8 +124,15 @@ class HelloWorld extends BaseController
         $pager = $userModel->pager;
         $pager->setPath('HelloWorld/html/');
         
-        
-        // var_dump($users);
+        // var_dump($pager->getTotal());
+        // var_dump($pager->getCurrentPage());
+        // var_dump($pager->getPageCount());
+        // var_dump($pager->getFirstPage());
+        // var_dump($pager->getLastPage());
+        // var_dump($pager->getPageURI());
+        // var_dump($pager->getNextPageURI());
+        // var_dump($pager->getPreviousPageURI());
+        // var_dump($pager->getDetails()['total']);
         
         $users = array('users'=>$users,'pager'=>$pager);
         return view('structure/header').view('structure/body', $users);
