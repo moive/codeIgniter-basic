@@ -98,12 +98,19 @@ class HelloWorld extends BaseController
 
     public function rotatedImage()
     {
+        $info = \Config\Services::image()
+            ->withFile('./img/logo-codeigniter.png')
+            ->getFile()
+            ->getProperties(true);
+        $width = $info['width'];
+        $height = $info['height'];
+
         $image = \Config\Services::image()
             ->withFile('./img/logo-codeigniter.png')
             ->reorient()
             // ->rotate(180)
             // ->fit(50, 150, 'bottom-right')
-            ->resize(400, 400, true)
+            ->resize($width / 2, $height / 2, true)
             ->save('./img/logo-codeigniter-rotated.png');
 
         return view('structure/image');
